@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "Student": {
+      "title": "Student",
+      "description": "Information about a student in the class",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "seatNumber": { "type": "string" }
+      },
+      "required": ["name", "seatNumber"]
+    },
+    "Errand": {
+      "title": "Errand",
+      "description": "Details of an errand or task assigned to a student",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "date": { "type": "string" },
+        "reason": { "type": "string" },
+        "description": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["PENDING", "IN_PROGRESS", "COMPLETED"] },
+        "assignedTask": { "type": "string" },
+        "assignmentDate": { "type": "string" },
+        "reviewedBy": { "type": "string", "enum": ["TEACHER", "OFFICER"] },
+        "reviewTimestamp": { "type": "string" },
+        "reviewProofUrl": { "type": "string" },
+        "isReviewed": { "type": "boolean" }
+      },
+      "required": ["studentId", "studentName", "date", "reason", "status", "isReviewed"]
+    }
+  },
+  "firestore": {
+    "/students": {
+      "schema": "Student",
+      "description": "List of students in the class"
+    },
+    "/errands": {
+      "schema": "Errand",
+      "description": "List of errands and task status"
+    }
+  }
+}
